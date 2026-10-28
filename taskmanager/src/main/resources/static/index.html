@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <header>
+      <h1>Mi agenda</h1>
+      <p class="lbl" id="today"></p>
+    </header>
+
+    <section class="metric">
+      <div class="between">
+        <p class="lbl">Progreso</p>
+        <p class="lbl" id="ptxt"></p>
+      </div>
+      <div class="bar"><div id="pbar"></div></div>
+    </section>
+
+    <section class="two metrics">
+      <div class="metric"><p class="lbl">Pendientes</p><b id="m1">0</b></div>
+      <div class="metric"><p class="lbl">Hechas</p><b id="m2">0</b></div>
+      <div class="metric"><p class="lbl">Para hoy</p><b id="m3">0</b></div>
+      <div class="metric"><p class="lbl">Vencidas</p><b id="m4" class="late">0</b></div>
+    </section>
+
+    <p class="lbl">Nueva tarea</p>
+    <form id="task-form">
+      <input id="title" placeholder="Título" maxlength="100">
+      <input id="description" placeholder="Descripción (opcional)">
+      <div class="two">
+        <input id="dueDate" type="date">
+        <select id="priority">
+          <option value="HIGH">Prioridad alta</option>
+          <option value="MEDIUM" selected>Prioridad media</option>
+          <option value="LOW">Prioridad baja</option>
+        </select>
+      </div>
+      <div class="two">
+        <select id="category">
+          <option>Estudios</option>
+          <option>Trabajo</option>
+          <option>Personal</option>
+        </select>
+        <button type="submit" class="btn">Añadir</button>
+      </div>
+    </form>
+    <p id="error"></p>
+
+    <input id="search" placeholder="Buscar tareas">
+
+    <div id="filters">
+      <button class="pill on" data-f="todas">Todas</button>
+      <button class="pill" data-f="pend">Pendientes</button>
+      <button class="pill" data-f="hechas">Hechas</button>
+      <button class="pill" data-f="alta">Alta prioridad</button>
+    </div>
+
+    <ul id="task-list"></ul>
+
+    <footer class="between">
+      <p class="lbl" id="count"></p>
+      <button class="btn small" id="clear">Borrar hechas</button>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

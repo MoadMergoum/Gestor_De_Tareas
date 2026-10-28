@@ -1,5 +1,6 @@
 package com.moad.taskmanager.service;
 
+import com.moad.taskmanager.model.Priority;
 import com.moad.taskmanager.model.Task;
 import com.moad.taskmanager.repository.TaskRepository;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,8 @@ public class TaskService {
             task.setDescription(data.getDescription());
             task.setDueDate(data.getDueDate());
             task.setCompleted(data.isCompleted());
+            task.setPriority(data.getPriority() != null ? data.getPriority() : Priority.MEDIUM);
+            task.setCategory(data.getCategory());
             return repository.save(task);
         });
     }
