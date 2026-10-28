@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Task {
@@ -13,7 +15,10 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El título es obligatorio")
+    @Size(max = 100, message = "El título no puede superar 100 caracteres")
     private String title;
+    @Size(max = 500, message = "La descripción no puede superar 500 caracteres")
     private String description;
     private LocalDate dueDate;
     private boolean completed;
